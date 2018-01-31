@@ -2,6 +2,12 @@ const ENCRYPTED_TEXT = '4f9fa8f98650091c4910f5b597773c0a48278cfb001fe4eb3ff47ada
 
 //Twój kod
 const crypto = require('crypto');
+const algorithmList = ['aes192', 'aes-256-cbc', 'aes-256-ecb'];
+let password = "";
+const sentence = "Pobawmy się jak komputerowy Detektyw";
+let wordsList = [];
+wordsList = sentence.split(' ').filter(word=>{password = password + word[0] + word[word.length-1]})
+
 
 function decodeText(encodedText, password, algorithm){
     const decipher = crypto.createDecipher(algorithm, password);
@@ -11,4 +17,12 @@ function decodeText(encodedText, password, algorithm){
     return decrypted;
 }
 
-console.log(decodeText(ENCRYPTED_TEXT, "PysęjkkyDw",'aes-256-ecb'))
+
+algorithmList.forEach(algorithm=>{
+   try{
+       console.log(decodeText(ENCRYPTED_TEXT, password, algorithm))
+    }catch(err) {
+       return null
+    }
+   
+})
