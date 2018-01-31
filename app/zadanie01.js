@@ -14,7 +14,7 @@ const tabPasswd = [
 
 const tabAlgorithms = ['sha256', 'sha512', 'md5', 'rmd160'];
 
-searchPasswd = (tabPasswd, tabAlgorithms, hash) => {
+const searchPasswd = (tabPasswd, tabAlgorithms, hash) => {
 	let searchPasswd;
 	
 	tabPasswd.forEach(p => {
