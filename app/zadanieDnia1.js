@@ -4,7 +4,7 @@ const crypto = require('crypto');
 function ReadAndCrypto(fileName) {
     fs.readFile(fileName, 'utf8', (err, data) => {
         if (err === null){
-            console.log("Poprawnie odczytano plik. \n", data);
+            console.log("Poprawnie odczytano plik. \n");
             const hash = crypto.createHmac('sha256', data)
                 .digest('hex');
             console.log(hash);
