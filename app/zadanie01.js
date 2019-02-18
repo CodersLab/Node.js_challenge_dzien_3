@@ -12,10 +12,12 @@ const passes = ['??TegoHasła',
 const algorithmTypes = ['sha256', 'sha512', 'md5', 'rmd160'];
 const crypto = require('crypto');
 
+// console.log(MY_PWD_HASH.length)    
 
-const hash = crypto.createHmac(algorithmTypes[3], passes[4])
-    .digest('hex');
-console.log(MY_PWD_HASH.length)    
-console.log(hash)    
-console.log('hash length: ', hash.length)    
-console.log(hash === MY_PWD_HASH);
+    passes.filter( (pass) => {
+        algorithmTypes.filter((algo) => {
+            const hash = crypto.createHmac(algo, pass).digest('hex')
+            MY_PWD_HASH === hash ?  console.log(`algorytm to: ${algo},
+hasło to: ${pass}`) : null            
+        })
+    })
